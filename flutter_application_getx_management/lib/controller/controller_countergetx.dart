@@ -9,3 +9,8 @@ class CounterGetX extends GetxController {
   void decrement() => count.value + 1;
   //value = nilai + 1
 }
+
+class Counter_people {
+  var myname;
+  Counter_people({this.myname});
+}

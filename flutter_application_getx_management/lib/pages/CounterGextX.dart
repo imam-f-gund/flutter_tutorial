@@ -11,18 +11,81 @@ class MypagesCounter extends StatefulWidget {
 }
 
 class _MypagesCounterState extends State<MypagesCounter> {
+  // getx function out file
   final counterC = Get.put(CounterGetX());
+  var counterP = Counter_people(myname: 'tess').obs;
+
+  // getx function in file
+  var count = 0.obs;
+  void add() {
+    count++;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(child: Obx(() => Text('Angka ${counterC.count}'))),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          counterC.increment();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: Obx(() => Text('Angka out file ${counterC.count}'))),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: Obx(() => Text('Angka in file $count'))),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: Obx(() => Text('Nama Saya ${counterP.value.myname}'))),
+          ),
+        ],
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(8.0, 500.0, 8.0, 8.0),
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      counterC.increment();
+                    },
+                    tooltip: 'GetX Two',
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () => add(),
+                    tooltip: 'GetX One',
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      counterP.update((val) {
+                        counterP.value.myname =
+                            counterP.value.myname.toString().toUpperCase();
+                      });
+                      // counterP.update(() {
+                    },
+                    tooltip: 'GetX three',
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
