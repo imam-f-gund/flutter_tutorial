@@ -78,7 +78,9 @@ class _MypagesCounterState extends State<MypagesCounter> {
                       //   counterP.value.myname =
                       //       counterP.value.myname.toString().toUpperCase();
                       // });
-                      // counterP.update(() {
+                      counterP.update((val) {
+                        val!.myname = val.myname.toString().toUpperCase();
+                      });
                     },
                     tooltip: 'GetX three',
                     child: const Icon(Icons.add),
