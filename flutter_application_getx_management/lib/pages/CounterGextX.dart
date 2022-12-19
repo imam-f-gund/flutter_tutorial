@@ -13,6 +13,7 @@ class MypagesCounter extends StatefulWidget {
 class _MypagesCounterState extends State<MypagesCounter> {
   // getx function out file
   final counterC = Get.put(CounterGetX());
+  final people = Get.put(Counter_people_model());
   var counterP = Counter_people(myname: 'tess').obs;
 
   // getx function in file
@@ -72,10 +73,11 @@ class _MypagesCounterState extends State<MypagesCounter> {
                   padding: const EdgeInsets.all(8.0),
                   child: FloatingActionButton(
                     onPressed: () {
-                      counterP.update((val) {
-                        counterP.value.myname =
-                            counterP.value.myname.toString().toUpperCase();
-                      });
+                      people.chageUppercase();
+                      // counterP.update((val) {
+                      //   counterP.value.myname =
+                      //       counterP.value.myname.toString().toUpperCase();
+                      // });
                       // counterP.update(() {
                     },
                     tooltip: 'GetX three',
