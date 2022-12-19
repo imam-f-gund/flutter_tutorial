@@ -86,6 +86,26 @@ class _MypagesCounterState extends State<MypagesCounter> {
                     child: const Icon(Icons.add),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Get.changeTheme(ThemeData.light());
+                    },
+                    tooltip: 'Get light',
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Get.changeTheme(ThemeData.dark());
+                    },
+                    tooltip: 'Get dark',
+                    child: const Icon(Icons.add),
+                  ),
+                ),
               ],
             ),
           ],

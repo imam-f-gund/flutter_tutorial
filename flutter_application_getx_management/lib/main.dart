@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_getx_management/pages/CounterGextX.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -105,7 +106,38 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialPageRoute(
                           builder: (context) => MypagesCounter()));
                 },
-                child: Text("Counter GetX"))
+                child: Text("Counter GetX")),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 18),
+                    primary: Colors.teal,
+                  ),
+                  onPressed: () {
+                    Get.snackbar('GetX Snackbar', 'Yay! Awesome GetX Snackbar',
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.tealAccent);
+                  },
+                  child: const Text('Show Snackbar')),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 18),
+                    primary: Colors.teal,
+                  ),
+                  onPressed: () {
+                    Get.defaultDialog(
+                        title: 'GetX Alert',
+                        middleText: 'Simple GetX alert',
+                        textConfirm: 'Okay',
+                        confirmTextColor: Colors.white,
+                        textCancel: 'Cancel');
+                  },
+                  child: const Text('Show AlertDialog')),
+            ),
           ],
         ),
       ),
